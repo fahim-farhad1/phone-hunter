@@ -4,35 +4,59 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Phone-Hunter</title>
+    <link
+      href="https://cdn.jsdelivr.net/npm/daisyui@4.12.10/dist/full.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
   <body class="mx-24">
     <nav class="flex justify-between mt-10">
-        <p class="text-blue-700 text-3xl font-bold">Phone-Hunter</p>
-        <button class="text-white p-3 rounded-lg bg-blue-500 font-bold">Sign Up</button>
+      <p class="text-blue-700 text-3xl font-bold">Phone-Hunter</p>
+      <button class="text-white p-3 rounded-lg bg-blue-500 font-bold">
+        Sign Up
+      </button>
     </nav>
     <!-- banner section  -->
-     <section class="mt-10 space-y-2">
-        <p class="text-4xl font-bold text-center">Apple Iphone 13 Pro Max</p>
-        <p class="text-center">There are many variations of passages of Lorem Ipsum available, but the majority <br> have suffered alteration in some form, by injected humou.</p>
-        <button class="text-white p-3 rounded-lg bg-blue-500 font-bold ml-[600px] ">Buy Now</button>
-        <!-- banner image  -->
-        <div class="flex justify-center items-center">
-            <img class="h-fit " src="/Assets/Iphone13small.png" alt="">
-            <img class="h-fit" src="/Assets/Iphone13big.png" alt="">
-            <img class="h-fit" src="/Assets/Iphone13small.png" alt="">
-        </div>
-     </section>
-     <!-- search section  -->
-      <section class="flex flex-col items-center gap-3">
-        <p class="text-2xl font-bold">Search Your Phone</p>
-        <div class="flex justify-center">
-            <input class="w-64 h-10 bg-slate-200" type="text">
-            <button class="bg-blue-500 py-2 px-4 rounded-md text-white">Search</button>
-        </div>
-      </section>
+    <section class="mt-10 space-y-2">
+      <p class="text-4xl font-bold text-center">Apple Iphone 13 Pro Max</p>
+      <p class="text-center">
+        There are many variations of passages of Lorem Ipsum available, but the
+        majority <br />
+        have suffered alteration in some form, by injected humou.
+      </p>
+      <button
+        class="text-white p-3 rounded-lg bg-blue-500 font-bold ml-[600px]"
+      >
+        Buy Now
+      </button>
+      <!-- banner image  -->
+      <div class="flex justify-center items-center">
+        <img class="h-fit" src="/Assets/Iphone13small.png" alt="" />
+        <img class="h-fit" src="/Assets/Iphone13big.png" alt="" />
+        <img class="h-fit" src="/Assets/Iphone13small.png" alt="" />
+      </div>
+    </section>
+    <!-- search section  -->
+    <section class="flex flex-col items-center gap-3">
+      <p class="text-2xl font-bold">Search Your Phone</p>
+      <div class="flex justify-center">
+        <input id="search" class="w-64 h-10 bg-gray-100 text-center" placeholder="Search" type="text" />
+        <button onclick="searchPhone()" class="bg-blue-500 py-2 px-4 rounded-md text-white">
+          Search
+        </button>
+      </div>
+    </section>
 
+    <!-- display phone card -->
+    <div id="phoneContainer" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mt-10"></div>
+
+
+    
     <!-- script  -->
     <script src="/script.js"></script>
+    <!-- desi ui script  -->
+    <script src="https://cdn.tailwindcss.com"></script>
   </body>
 </html>

@@ -1,18 +1,36 @@
 const phoneContainer = document.getElementById("phoneContainer");
-const searchValue = document.getElementById('search');
-const loadData = async (searchText) => {
+const searchValue = document.getElementById("search");
+const showMore = document.getElementById("showMore");
+const loader = document.getElementById("loader");
+
+// load phones data
+const loadData = async (searchText, isShowAll) => {
   const res = await fetch(
     `https://openapi.programming-hero.com/api/phones?search=${searchText}`
   );
   const data = await res.json();
   const phones = data.data;
-  displayPhones(phones);
+  displayPhones(phones, isShowAll);
 };
 
-const displayPhones = (phones) => {
-    phoneContainer.textContent = ''
-    phones.forEach((phone) => {
-      console.log(phone)
+// show phone data on display
+const displayPhones = (phones, isShowAll) => {
+  // first clear container
+  phoneContainer.textContent = "";
+
+  // hide and unhide show more button
+  if (phones.length > 9 && !isShowAll) {
+    showMore.classList.remove("hidden");
+  } else {
+    showMore.classList.add("hidden");
+  }
+  // slice data
+  if (!isShowAll) {
+    phones = phones.slice(0, 9);
+  }
+
+  phones.forEach((phone) => {
+    console.log(phone);
     const phoneCard = document.createElement("div");
     phoneCard.classList = `card card-compact bg-base-100 w-full shadow-xl`;
     phoneCard.innerHTML = `
@@ -31,11 +49,30 @@ const displayPhones = (phones) => {
         `;
     phoneContainer.appendChild(phoneCard);
   });
+
+  //   stop loader
+  toggleLoader(false);
 };
 
-    const searchPhone = () =>{
-        const searchText = searchValue.value;
-        console.log(searchText)
-        loadData(searchText)
-    }
+// search phone
+const searchPhone = (isShowAll) => {
+  toggleLoader(true);
+  const searchText = searchValue.value;
+  console.log(searchText);
+  loadData(searchText, isShowAll);
+};
+
+// loader function
+const toggleLoader = (isLoading) => {
+  if (isLoading) {
+    loader.classList.remove("hidden");
+  } else {
+    loader.classList.add("hidden");
+  }
+};
+
+const showAllData = () => {
+  searchPhone(true);
+};
+
 loadData();
